@@ -1,0 +1,36 @@
+{
+  "name": "scriptable-util",
+  "version": "1.0.0",
+  "description": "Utils for Scriptable on iOS",
+  "main": "dist/main.js",
+  "types": "dist/maint.d.ts",
+  "author": "saltie2193 <saltie@protonmail.com>",
+  "license": "MIT",
+  "files": [
+    "./dist/**/*",
+    "LICENSE",
+    "README"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint ./src",
+    "test": "yarn jest",
+    "format": "prettier --write ./src/**/*.ts"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.3.1",
+    "@types/scriptable-ios": "^1.7.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "jest": "^29.3.1",
+    "prettier": "^2.8.0",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.9.3"
+  },
+  "keywords": [
+    "scriptable",
+    "iOS"
+  ]
+}
