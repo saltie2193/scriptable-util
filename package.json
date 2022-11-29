@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Utils for Scriptable on iOS",
   "main": "dist/main.js",
-  "types": "dist/maint.d.ts",
+  "types": "dist/main.d.ts",
   "author": "saltie2193 <saltie@protonmail.com>",
   "license": "MIT",
   "files": [
