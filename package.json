@@ -1,5 +1,5 @@
 {
-  "name": "scriptable-util",
+  "name": "@saltie2193/scriptable-util",
   "version": "1.0.0",
   "description": "Utils for Scriptable on iOS",
   "main": "dist/main.js",
