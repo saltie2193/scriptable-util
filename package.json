@@ -32,5 +32,9 @@
   "keywords": [
     "scriptable",
     "iOS"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saltie2193/scriptable-util"
+  }
 }
