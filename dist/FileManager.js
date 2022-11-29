@@ -177,7 +177,7 @@ class NewFileManager {
      * 2. Checks if the given file is stored in the iCloud and downloads it if necessary.
      * 3. Uses the given function to read the file and returns the result.
      *
-     * @param {string} filePath - Path to file, relative to the basedor of the {@link NewFileManager}.
+     * @param {string} filePath - Path to file, relative to the basedir of the {@link NewFileManager}.
      * @param {(path: string) => T} fn - Function to read the given file.
      * @returns {DataResponse<T>}
      */
@@ -273,7 +273,7 @@ class NewFileManager {
      * Note that it is always safe to call `downloadFileFromiCloud(filePath)`, even if the file is stored locally on the device.
      *
      * @param filePath - Path of the file to read, relatively to the basedir of the {@link NewFileManager}.
-     * @param autoExtension - Automatcally add '.json' extension to the file path.
+     * @param autoExtension - Wether to automatically add '.json' extension to the file path.
      * @returns
      */
     readJSON(filePath, autoExtension = true) {
@@ -293,7 +293,7 @@ class NewFileManager {
      * If the file does not exists or downloading fails, an {@link EmptyResponse} will be returned.
      *
      * @param filePath - Path of the file to read, relatively to the basedir of the {@link NewFileManager}.
-     * @param autoExtension - Automatcally add '.json' extension to the file path.
+     * @param autoExtension - Wether to automatically add '.json' extension to the file path.
      * @returns
      */
     async readJSONS(filePath, autoExtension = true) {
@@ -315,10 +315,10 @@ class NewFileManager {
      * Use `fileExists(filePath)` to check if a file exists and `downloadFileFromiCloud(filePath)` to download the file.
      * Note that it is always safe to call `downloadFileFromiCloud(filePath)`, even if the file is stored locally on the device.
      *
-     * If the content of the file is not a JSON dictonary `null` will be returned.
+     * If the content of the file is not a JSON dictionary `null` will be returned.
      *
      * @param filePath - Path of the file to read, relatively to the basedir of the {@link NewFileManager}.
-     * @param autoExtension - Automatcally add '.json' extension to the file path.
+     * @param autoExtension - Wether to automatically add '.json' extension to the file path.
      * @returns
      */
     readJSONDict(filePath, autoExtension = true) {
@@ -341,7 +341,7 @@ class NewFileManager {
      * If the content of the file cannot be read as a JSON dictionary an {@link EmptyResponse} will be returned.
      *
      * @param filePath - Path of the file to read, relatively to the basedir of the {@link NewFileManager}.
-     * @param autoExtension - Automatcally add '.json' extension to the file path.
+     * @param autoExtension - Wether to automatically add '.json' extension to the file path.
      * @returns A {@link DataResponse} containing the content of the file as {@link Record}. An {@link EmptyResponse} if the file does not exist or the content cannot be read as JSON dictionary.
      */
     async readJSONDictS(filePath, autoExtension = true) {
@@ -399,7 +399,7 @@ class NewFileManager {
      *
      * Writes the content to the specified file path on disk.
      * If the file does not already exist, it will be created.
-     * If the file already exists the contents of the file will beoverwritten with the new content.
+     * If the file already exists the contents of the file will be overwritten with the new content.
      * @param filePath - Path of file to write to, relative to the basedir of the {@link NewFileManager}.
      * @param content - Content to write to disk, relative to the basedir of the {@link NewFileManager}.
      */

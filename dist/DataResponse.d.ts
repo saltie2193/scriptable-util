@@ -12,27 +12,22 @@ interface DataResponseInterface<T> {
     succeeded: () => boolean;
     msg?: string;
 }
+/**
+ * _Convenient data status handling_
+ */
 declare class DataResponse<T> implements DataResponseInterface<T> {
     data: T;
     status: DataStatus;
     msg?: string;
     /**
      * Creates new {@link DataResponse} from an old instance with new {@link DataStatus}.
-     * Data and message will be coppied from the old instance to the new instance.
+     * Data and message will be copied from the old instance to the new instance.
      *
      * @param {DataResponse<T>} resp - Old  {@link DataResponse} instance.
      * @param {DataStatus} status - New {@link DataStatus} to use.
      * @returns {DataResponse<T>} New {@link DataResponse} instance.
      */
     static fromDataResponse<T>(resp: DataResponse<T>, status: DataStatus): DataResponse<T>;
-    constructor(data: T, status?: DataStatus, msg?: string);
-    succeeded(): boolean;
-    /**
-     * Checks if the {@link DataResponse} is empty.
-     * If the field `data` is `null` or `undefined` the object is an instance of {@link EmptyResponse}.
-     * Otherwise its an instance of {@link DataResponse}.
-     */
-    isEmpty(): this is DataResponse<null>;
     /**
      * Creates a new EmptyResponse without data, with given status and msg.
      * If a message is provided it will be logged as a warning.
@@ -43,13 +38,12 @@ declare class DataResponse<T> implements DataResponseInterface<T> {
      */
     static empty(status?: DataStatus, msg?: string): EmptyResponse;
     /**
-     * Creates a new {@link DataResponse} with status {@link DataStatus.OK}.
+     * Creates new {@link EmptyResponse} with {@link DataStatus.NOT_FOUND}.
      *
-     * @param data - Data of the created {@link DataResponse}.
-     * @param {string} msg - Message of the created {@link DataResponse}.
-     * @returns {DataResponse} New {@link DataResponse}.
+     * @param {string} msg - Message of the created {@link EmptyResponse}.
+     * @returns {EmptyResponse} New {@link EmptyResponse}.
      */
-    static ok<T>(data: T, msg?: string): DataResponse<T>;
+    static notFound(msg?: string): EmptyResponse;
     /**
      * Creates new {@link EmptyResponse} with {@link DataStatus.Error}.
      *
@@ -58,19 +52,20 @@ declare class DataResponse<T> implements DataResponseInterface<T> {
      */
     static error(msg?: string): EmptyResponse;
     /**
-     * Creates new {@link EmptyResponse} with {@link DataStatus.NOT_FOUND}.
-     *
-     * @param {string} msg - Messag of the created {@link EmptyResponse}.
-     * @returns {EmptyResponse} New {@link EmptyResponse}.
-     */
-    static notFound(msg?: string): EmptyResponse;
-    /**
      * Creates new {@link EmptyResponse} with {@link DataStatus.API_ERROR}.
      *
-     * @param {string} msg - Messag of the created {@link EmptyResponse}.
+     * @param {string} msg - Message of the created {@link EmptyResponse}.
      * @returns {EmptyResponse} New {@link EmptyResponse}.
      */
     static apiError(msg?: string): EmptyResponse;
+    /**
+     * Creates a new {@link DataResponse} with status {@link DataStatus.OK}.
+     *
+     * @param data - Data of the created {@link DataResponse}.
+     * @param {string} msg - Message of the created {@link DataResponse}.
+     * @returns {DataResponse} New {@link DataResponse}.
+     */
+    static ok<T>(data: T, msg?: string): DataResponse<T>;
     /**
      * Creates new {@link DataResponse} with status {@link DataStatus.CACHED}.
      * If the passed data is already a {@link DataResponse} a new {@link DataResponse} will be created.
@@ -80,8 +75,16 @@ declare class DataResponse<T> implements DataResponseInterface<T> {
      * @returns
      */
     static cached<T>(data: T): DataResponse<T>;
+    constructor(data: T, status?: DataStatus, msg?: string);
+    succeeded(): boolean;
     /**
-     * Check if given {@link DataStatus} is interpreted as a successfull response.
+     * Checks if the {@link DataResponse} is empty.
+     * If the field `data` is `null` or `undefined` the object is an instance of {@link EmptyResponse}.
+     * Otherwise its an instance of {@link DataResponse}.
+     */
+    isEmpty(): this is DataResponse<null>;
+    /**
+     * Check if given {@link DataStatus} is interpreted as a successful response.
      * @param {DataStatus} status
      * @returns {boolean}
      */
