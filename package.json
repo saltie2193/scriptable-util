@@ -4,6 +4,7 @@
   "description": "Utils for Scriptable on iOS",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
+  "type": "module",
   "author": "saltie2193 <saltie@protonmail.com>",
   "license": "MIT",
   "files": [
